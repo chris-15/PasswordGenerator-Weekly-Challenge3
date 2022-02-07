@@ -13,7 +13,7 @@ function generatePassword() {
   var passwordLength = parseInt(window.prompt("Please select a password length between 8 and 128 characters!"));
   //checks to see if lenght is acceptable if not, start over
   if (passwordLength > 7 && passwordLength < 129 && Number.isInteger(passwordLength)) {
-    window.confirm("Are you sure you would like a password lenght of " + passwordLength + "?");
+    window.confirm("Are you sure you would like a password length of " + passwordLength + "?");
   }else {
     window.alert("Your pasword length is not acceptable. Please try again!");
     return generatePassword();
@@ -38,7 +38,7 @@ function generatePassword() {
   }
 
   //empty arrays to hold all the characters if they are selected
-  var emptyPassword = []
+  var emptyPassword = [];
 
 
   if (isLowerCase) {
