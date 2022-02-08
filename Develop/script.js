@@ -1,4 +1,5 @@
 // Assignment code here
+//assigned arrays with all the characters needed for the password
 upperCase =  ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -6,8 +7,7 @@ specialCharacters =[" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", "-", "/", 
 
 
 function generatePassword() {
-  console.log("test");
-  window.alert("Please see following prompts for password criteria. Select length and atleast one character type! ");
+  window.alert("Please see following prompts for password criteria. Select a length and at least one character type! ");
 
   //prompt to store password length
   var passwordLength = parseInt(window.prompt("Please select a password length between 8 and 128 characters!"));
@@ -37,33 +37,41 @@ function generatePassword() {
     return generatePassword();
   }
 
-  //empty arrays to hold all the characters if they are selected
+  //empty array to hold all the characters if/when they are selected based on the prompts
   var emptyPassword = [];
 
-
+  //checks to see if character prompts are true (selected), if they were- add corresponding character array to empty array
   if (isLowerCase) {
-    emptyPassword.concat(lowerCase);
+    emptyPassword = emptyPassword.concat(lowerCase);
   }
 
   if (isUpperCase) {
-    emptyPassword.concat(upperCase);
+    emptyPassword = emptyPassword.concat(upperCase);
   }
 
   if (isNumbers) {
-    emptyPassword.concat(numbers);
+    emptyPassword = emptyPassword.concat(numbers);
   }
 
   if (isSpecialCharacters) {
-    emptyPassword.concat(specialCharacters);
+    emptyPassword = emptyPassword.concat(specialCharacters);
   }
 
-  var allPasswordCharacters = emptyPassword;
-  console.log(allPasswordCharacters);
+  //new variable that holds all the selected characters
+  var chosenCharacters = emptyPassword;
+  console.log(chosenCharacters); //test to see if correct characters were chosen
+
+  //empty variable for the password so it can go through randomization loop
+  var randomPassword= ""
+
+  for (var i= 0; i <passwordLength; i++) {
+    randomPassword = randomPassword + chosenCharacters[Math.floor(Math.random()* chosenCharacters.length)];
+    console.log(randomPassword); // test to see what is printed each time through
+  }
 
 
-
-  return "placeholder";
-} // end of generate password functino
+  return randomPassword;
+} // end of generate password function
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
